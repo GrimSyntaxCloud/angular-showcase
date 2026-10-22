@@ -122,7 +122,10 @@
       <div class="metric-strip">
         <div>
           <span>COURSES ENTERED</span
-          ><strong>{{('0'+entries().length).slice(-2)}}</strong>
+          ><strong
+            >{{entries().length < 10 ? '0'+entries().length :
+            entries().length}}</strong
+          >
         </div>
         <div>
           <span>GRADING SCALE</span
@@ -217,7 +220,11 @@
           <div>
             <p class="eyebrow">THE DETAILS BEHIND THE NUMBER</p>
             <h2>
-              Your transcript <span>{{('0'+entries().length).slice(-2)}}</span>
+              Your transcript
+              <span
+                >{{entries().length < 10 ? '0'+entries().length :
+                entries().length}}</span
+              >
             </h2>
           </div>
           <button
@@ -242,7 +249,8 @@
               @for(e of entries();track $index;let i=$index){
               <tr>
                 <td>
-                  <span class="row-number">{{('0'+(i+1)).slice(-2)}}</span
+                  <span class="row-number"
+                    >{{i + 1 < 10 ? '0'+(i+1) : i+1}}</span
                   >{{e.course}}
                 </td>
                 <td><b class="grade-pill">{{e.grade}}</b></td>
