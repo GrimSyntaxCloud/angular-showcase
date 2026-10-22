@@ -2,11 +2,11 @@
 
 A maintained showcase edition of Andres Macias’s WEB 425 coursework. These are independent frontend applications in one Angular workspace. The untouched original source remains in [GrimSyntaxCloud/web-425](https://github.com/GrimSyntaxCloud/web-425); this workspace does not replace that repository or its current GitHub Pages redirect.
 
-| Demo             | Original source                | What it does                                                                                                   | Design                                                                                         |
-| ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| The Reading Room | `week-8/in-n-out-books`        | Nine original ISBNs from Open Library, title/author/ISBN filtering, book detail dialog, manual wishlist entry. | Forest green and paper; editorial typography, CSS book artwork, shelf-like rows.               |
-| Grade Lab        | `week-7/gpa-calculator-app3`   | Original demo student IDs, course and grade entry, transcript, equal-weight GPA, reset and sign-out.           | Swiss instrument dashboard; cobalt, citrus, sharp grids and oversized numerals.                |
-| Opus             | `week-4/reactive-composer-app` | The original five composer records, reactive name search, individual details, About and Contact.               | Concert program; plum, ivory, copper, typographic directory and original CSS record sculpture. |
+| Demo             | Original source                | What it does                                                                                                   | Design                                                                                                                       |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| The Reading Room | `week-8/in-n-out-books`        | Nine original ISBNs from Open Library, title/author/ISBN filtering, book detail dialog, manual wishlist entry. | Ink blue, parchment and vermilion; a library index rail, stacked spines, illustrated shelf jackets and reading-desk details. |
+| Grade Lab        | `week-7/gpa-calculator-app3`   | Original demo student IDs, course and grade entry, transcript, equal-weight GPA, reset and sign-out.           | Swiss instrument dashboard; cobalt, citrus, sharp grids and oversized numerals.                                              |
+| Opus             | `week-4/reactive-composer-app` | The original five composer records, reactive name search, individual details, About and Contact.               | Concert program; plum, ivory, copper, typographic directory and original CSS record sculpture.                               |
 
 ## Local development
 
@@ -35,6 +35,7 @@ Production outputs: `dist/reading-room`, `dist/grade-lab`, and `dist/opus`. A st
 The GitHub Actions workflow tests and builds all three applications, then publishes only `dist` on pushes to `main` or manual runs. GitHub Pages uses GitHub Actions as its source.
 
 Live demos:
+
 - [The Reading Room](https://grimsyntaxcloud.github.io/angular-showcase/reading-room/)
 - [Grade Lab](https://grimsyntaxcloud.github.io/angular-showcase/grade-lab/)
 - [Opus](https://grimsyntaxcloud.github.io/angular-showcase/opus/)
@@ -42,6 +43,10 @@ Live demos:
 The new public repository is [GrimSyntaxCloud/angular-showcase](https://github.com/GrimSyntaxCloud/angular-showcase).
 
 Do not copy this workflow into `web-425` without reconciling its existing redirect workflow. No Azure resources, databases, paid APIs, paid fonts, external UI libraries, or subscriptions are required. GitHub's hosting policies and free usage limits still apply.
+
+## Reading Room design
+
+The Reading Room uses a catalog-first library identity rather than a split editorial hero. A dark ink-blue index rail, parchment catalog cards, stacked book spines and a broad bookshelf give it its own silhouette. Each original CSS jacket has layered page edges and a restrained opening motion on hover or keyboard focus. Reduced-motion preferences remove that movement. At mobile widths the index becomes a compact navigation strip and the shelf uses two columns. Book search, Open Library refresh, edition details, wishlist storage and all original routes are unchanged. No paid fonts, stock covers, images or additional libraries are used.
 
 ## Validation
 

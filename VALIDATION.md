@@ -19,6 +19,7 @@ Performed through the in-app browser against the built production files at `http
 ## Mobile browser checks
 
 The root agent checked all three applications at 390px width in the in-app browser:
+
 - Reading Room: no horizontal overflow; book detail modal fits the phone viewport.
 - Grade Lab: demo sign-in, adding Design Systems with grade A, calculating 4.00, and the responsive workspace verified. A retained scroll position after sign-in was repaired; sign-in and sign-out now scroll immediately to the top.
 - Opus: directory and composer detail views fit without horizontal overflow.
@@ -31,7 +32,10 @@ The static applications are published from the public angular-showcase repositor
 
 The GitHub Pages workflow targets the standalone angular-showcase repository and runs on main pushes or manual dispatch. It must not be dropped into the original web-425 redirect repository unchanged.
 
-
 ## Root-agent mobile verification
 
 All three applications checked in the in-app browser at a 390px viewport (375px content width after the scrollbar), with no horizontal overflow. Reading Room's catalog and book-details modal fit; Grade Lab's demo sign-in, add-course, and GPA controls worked at mobile width (A = 4.00); Opus's directory and actual composer detail fit. Full-page mobile screenshots are in `../screenshots/*-mobile.png`. A retained-scroll issue after Grade Lab sign-in was fixed and the production build rerun. Viewport restored after checks.
+
+## Reading Room library redesign — October22,2026
+
+Replaced the prior split editorial hero/forest palette with an ink-blue library index, parchment reading desk, stacked spines and illustrated book shelves. All app logic and the other two applications remain unchanged. Nine behavior tests and all three strict production builds passed. Browser verified title filtering, edition details, adding from the modal, wishlist persistence after reload, removal, and all nine catalog cards. The longest title's dialog fits at320px; catalog and wishlist have no horizontal page overflow at390px (content375) or320px (content305). Cover-opening transitions are CSS-only and disabled for reduced-motion preferences. Desktop/mobile proof screenshots are saved in the durable recovery artifacts.

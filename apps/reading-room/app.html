@@ -1,199 +1,281 @@
 <a class="skip" href="#main">Skip to content</a>
-<header>
-  <a class="wordmark" href="#/"
-    >r<span>r</span><small>THE READING ROOM</small></a
+<header class="masthead">
+  <a class="wordmark" href="#/" aria-label="The Reading Room home"
+    ><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span
+    ><span>The Reading<br /><em>Room.</em></span></a
   >
-  <nav aria-label="Main">
-    <a href="#/" [attr.aria-current]="page()==='browse'?'page':null"
-      >The collection</a
-    ><a href="#/wishlist" [attr.aria-current]="page()==='wishlist'?'page':null"
-      >My wishlist <b>{{wishlist().length}}</b></a
-    ><a href="#/about">Our story</a>
-  </nav>
-  <span class="edition">VOL. 01 / A BOOKISH LITTLE CORNER</span>
+  <p class="masthead-note">
+    A SMALL COLLECTION.<br /><strong>A THOUSAND PLACES TO GO.</strong>
+  </p>
+  <a class="reading-list" href="#/wishlist"
+    >Your reading list <b>{{wishlist().length}}</b
+    ><span aria-hidden="true">↗</span></a
+  >
 </header>
-<main id="main">
-  @if(page()==='browse'){
-  <section class="hero">
-    <div class="intro">
-      <p class="eyebrow">IN-N-OUT BOOKS, REIMAGINED</p>
-      <h1>Between<br />the <em>pages.</em></h1>
-      <p class="dek">
-        Big worlds. Quiet moments.<br />Find your next place to get lost.
-      </p>
-      <a class="button" href="#collection"
-        >Explore the collection <span>↗</span></a
+<div class="library-layout">
+  <aside class="index-rail" aria-label="Library index">
+    <div class="rail-heading"><span>THE INDEX</span><span>↙</span></div>
+    <nav aria-label="Main">
+      <a href="#/" [attr.aria-current]="page()==='browse'?'page':null"
+        ><small>01</small><span>The collection</span><b>09</b></a
+      >
+      <a href="#/wishlist" [attr.aria-current]="page()==='wishlist'?'page':null"
+        ><small>02</small><span>My wishlist</span
+        ><b>{{wishlist().length}}</b></a
+      >
+      <a href="#/about" [attr.aria-current]="page()==='about'?'page':null"
+        ><small>03</small><span>Our story</span
+        ><span aria-hidden="true">↗</span></a
+      >
+    </nav>
+    <div class="library-card">
+      <span class="card-hole" aria-hidden="true"></span>
+      <p class="eyebrow">READER'S NOTE / 001</p>
+      <p>Good books.<br /><em>No rush.</em></p>
+      <div class="ruled-lines" aria-hidden="true"></div>
+      <small>Leave room for<br />an unexpected favorite.</small
+      ><span class="library-stamp" aria-hidden="true"
+        >TAKE<br />YOUR<br />TIME</span
       >
     </div>
-    <div class="book-art" aria-hidden="true">
-      <div class="orbit">GOOD STORIES STAY WITH YOU</div>
-      <div class="book book-one">
-        <span>J.R.R.<br />TOLKIEN</span><strong>The<br />Hobbit</strong
-        ><i>THERE AND BACK AGAIN</i>
-      </div>
-      <div class="book book-two">
-        <span>FRANK HERBERT</span><strong>DUNE</strong><i>A WORLD BEYOND</i>
-      </div>
-      <div class="book book-three">
-        <span>F. SCOTT FITZGERALD</span><strong>The Great<br />Gatsby</strong>
-        <div>✦</div>
-      </div>
-      <span class="art-caption">A SMALL SHELF. ENDLESS POSSIBILITIES.</span>
-    </div>
-  </section>
-  <section class="collection" id="collection">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">THE CURATED SHELF</p>
-        <h2>Your next chapter.</h2>
-      </div>
-      <label
-        >Find a book<input
-          type="search"
-          placeholder="Title, author or ISBN"
-          [(ngModel)]="query"
-      /></label>
-    </div>
-    <div class="collection-meta">
-      <span>{{visible.length}} {{visible.length === 1 ? "edition" : "editions"}} / {{status()}}</span
-      ><button class="text-button" (click)="refresh()" [disabled]="loading()">
-        {{loading()?'Refreshing…':'Refresh catalog ↻'}}
-      </button>
-    </div>
-    <div class="book-list">
-      @for(book of visible; track book.isbn; let i=$index){
-      <article>
-        <span class="number">{{('0'+(i+1)).slice(-2)}}</span>
-        <div class="mini-cover" [class.alt]="i%2===1" aria-hidden="true">
-          <span>{{book.authors.split(',')[0]}}</span
-          ><strong>{{book.title}}</strong><i>R / R</i>
-        </div>
-        <div class="book-info">
-          <span class="eyebrow">{{book.pages||'—'}} PAGES · {{book.year}}</span>
-          <h3><button (click)="show(book)">{{book.title}}</button></h3>
-          <p>{{book.authors}}</p>
-        </div>
-        <button
-          class="round"
-          (click)="show(book)"
-          [attr.aria-label]="'View '+book.title"
-        >
-          ↗
-        </button>
-      </article>
-      }@empty{
-      <p class="empty">
-        No books match “{{query}}”. Try another title or author.
+    <div class="rail-foot">
+      <span class="tiny-books" aria-hidden="true">▥ ▥ ▥</span>
+      <p>
+        IN-N-OUT BOOKS<br />A renewed edition of<br />Andres's WEB 425
+        coursework.
       </p>
-      }
+      <a href="#/contact">Behind the pages ↗</a>
     </div>
-  </section>
-  } @else if(page()==='wishlist') {
-  <section class="page-intro">
-    <p class="eyebrow">FOR ANOTHER AFTERNOON</p>
-    <h1>The <em>wishlist.</em></h1>
-    <p>Keep a little room for the books you haven't met yet.</p>
-  </section>
-  <section class="wish-layout">
-    <form (ngSubmit)="add()">
-      <h2>Add a future favorite.</h2>
-      <label
-        >Book title<input
-          name="title"
-          [(ngModel)]="title"
-          required
-          maxlength="160" /></label
-      ><label
-        >Author or authors<input
-          name="author"
-          [(ngModel)]="author"
-          required
-          maxlength="160" /></label
-      ><button class="button" type="submit">
-        Add to wishlist <span>+</span>
-      </button>
-      <p class="muted">Saved only in this browser. No account needed.</p>
-    </form>
-    <div class="wishes">
-      @for(item of wishlist();track $index;let i=$index){
-      <article>
-        <span class="number">{{i+1}}</span>
-        <div>
-          <h3>{{item.title}}</h3>
-          <p>{{item.authors}}</p>
-        </div>
-        <button
-          class="text-button"
-          (click)="remove(i)"
-          [attr.aria-label]="'Remove '+item.title"
-        >
-          Remove
-        </button>
-      </article>
-      }@empty{
-      <div class="empty">
-        <span class="large-star">✦</span>
-        <h2>A little space for possibility.</h2>
-        <p>
-          Your wishlist is empty. Add a title here or find one in the
-          collection.
-        </p>
-        <a href="#/">Browse the collection ↗</a>
+  </aside>
+  <main id="main">
+    @if(page()==='browse'){
+    <section class="desk-heading">
+      <div class="heading-meta">
+        <p class="eyebrow">THE READING ROOM / VOL. 01</p>
+        <span class="collection-seal">9 BOOKS<br />ENDLESS WORLDS</span>
       </div>
-      }
-    </div>
-  </section>
-  } @else if(page()==='about') {
-  <section class="page-intro">
-    <p class="eyebrow">OUR STORY</p>
-    <h1>A love of<br /><em>good stories.</em></h1>
-    <p>
-      The Reading Room is a renewed edition of In-N-Out Books, Andres Macias’s
-      WEB 425 Angular coursework.
-    </p>
-  </section>
-  <section class="prose">
-    <h2>A small library, thoughtfully built.</h2>
-    <p>
-      Browse the original nine-book collection, open edition details, and create
-      a personal wishlist. The catalog comes from Open Library; the wishlist
-      stays in your browser.
-    </p>
-    <h2>Author spotlight: Michael Scott</h2>
-    <p>
-      The original project featured Irish fantasy author Michael Scott. Explore
-      his books and work on
-      <a
-        href="https://www.dillonscott.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        >his official website ↗</a
-      >.
-    </p>
-    <p>
-      This is a student portfolio demo, not a bookstore or an affiliation with
-      any author or publisher.
-    </p>
-  </section>
-  } @else {
-  <section class="page-intro">
-    <p class="eyebrow">SAY HELLO</p>
-    <h1>Made for<br /><em>the curious.</em></h1>
-    <p>A portfolio project by Andres Macias.</p>
-  </section>
-  <section class="prose">
-    <h2>Behind the pages.</h2>
-    <p>
-      This fictional reading room has no physical shop or customer support line.
-      Find the developer and the rest of his work on his portfolio.
-    </p>
-    <a class="button" href="https://grimsyntaxcloud.github.io/"
-      >Visit Andres’s portfolio ↗</a
+      <h1>A good book.<br /><span>A little time.</span></h1>
+      <div class="heading-bottom">
+        <p>Big worlds. Quiet moments.<br />Find your next place to get lost.</p>
+        <a href="#collection"
+          >Pull up a chair <span aria-hidden="true">↓</span></a
+        >
+      </div>
+      <div class="spine-stack" aria-hidden="true">
+        <span>THE HOBBIT <i>J.R.R. TOLKIEN</i></span
+        ><span>THE GREAT GATSBY <i>F. SCOTT FITZGERALD</i></span
+        ><span>DUNE <i>FRANK HERBERT</i></span>
+      </div>
+    </section>
+    <section
+      class="collection"
+      id="collection"
+      aria-labelledby="collection-title"
     >
-  </section>
-  }
-  <p class="notice" role="status">{{notice()}}</p>
-</main>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">BROWSE THE SHELVES</p>
+          <h2 id="collection-title">
+            Something worth<br /><em>getting lost in.</em>
+          </h2>
+        </div>
+        <label class="catalog-search"
+          >Search the catalog<span class="search-field"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              type="search"
+              placeholder="Title, author or ISBN"
+              [(ngModel)]="query" /></span
+        ></label>
+      </div>
+      <div class="collection-meta">
+        <span
+          >{{visible.length}} {{visible.length===1?'BOOK':'BOOKS'}} ON THE
+          SHELF</span
+        ><button class="text-button" (click)="refresh()" [disabled]="loading()">
+          {{loading()?'Refreshing…':'Refresh catalog ↻'}}
+        </button>
+      </div>
+      <p class="catalog-source">{{status()}}</p>
+      <div class="book-grid">
+        @for(book of visible; track book.isbn; let i=$index){
+        <article class="catalog-book" [style.--j]="i%6">
+          <div class="shelf-position">
+            <span>RR / {{('0'+(books().indexOf(book)+1)).slice(-2)}}</span
+            ><span>{{book.pages||'—'}} PP.</span>
+          </div>
+          <button
+            class="jacket-button"
+            (click)="show(book)"
+            [attr.aria-label]="'View '+book.title"
+          >
+            <span
+              class="book-object"
+              [class.cover-red]="i%6===1"
+              [class.cover-sky]="i%6===2"
+              [class.cover-ochre]="i%6===3"
+              [class.cover-dark]="i%6===4"
+              [class.cover-pale]="i%6===5"
+            >
+              <span class="book-pages" aria-hidden="true"></span
+              ><span class="book-jacket"
+                ><span class="jacket-author"
+                  >{{book.authors.split(',')[0]}}</span
+                ><strong>{{book.title}}</strong
+                ><span
+                  class="jacket-art"
+                  [class.art-orbit]="i%3===1"
+                  [class.art-steps]="i%3===2"
+                  aria-hidden="true"
+                  ><i></i><i></i><i></i></span
+                ><span class="jacket-edition"
+                  >THE READING ROOM <b>R/R</b></span
+                ></span
+              > </span
+            ><span class="open-caption" aria-hidden="true"
+              >Open edition notes ↗</span
+            >
+          </button>
+          <div class="book-info">
+            <h3><button (click)="show(book)">{{book.title}}</button></h3>
+            <p>{{book.authors}}</p>
+            <button class="book-action" (click)="show(book)">
+              Edition details <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </article>
+        } @empty{
+        <div class="empty">
+          <span class="empty-mark" aria-hidden="true">∅</span>
+          <h3>Not on this shelf.</h3>
+          <p>No books match “{{query}}”. Try another title, author or ISBN.</p>
+          <button class="text-button" (click)="query=''">
+            Show all nine books ↗
+          </button>
+        </div>
+        }
+      </div>
+      <div class="shelf-end">
+        <span>END OF THIS SHELF. START OF SOMETHING GOOD.</span
+        ><span>Jackets imagined by The Reading Room.</span>
+      </div>
+    </section>
+    } @else if(page()==='wishlist'){
+    <section class="page-intro">
+      <p class="eyebrow">YOUR READER'S NOTEBOOK / 02</p>
+      <h1>For another<br /><em>afternoon.</em></h1>
+      <p>Keep a little room for the books you haven't met yet.</p>
+    </section>
+    <section class="wish-layout">
+      <form (ngSubmit)="add()">
+        <p class="eyebrow">A NOTE TO YOUR FUTURE SELF</p>
+        <h2>Add a future favorite.</h2>
+        <label
+          >Book title<input
+            name="title"
+            [(ngModel)]="title"
+            required
+            maxlength="160" /></label
+        ><label
+          >Author or authors<input
+            name="author"
+            [(ngModel)]="author"
+            required
+            maxlength="160" /></label
+        ><button class="button" type="submit">
+          Add to wishlist <span>+</span>
+        </button>
+        <p class="muted">Saved only in this browser. No account needed.</p>
+      </form>
+      <div class="wishes">
+        <div class="list-heading">
+          <span>THE TO-READ LIST</span
+          ><span
+            >{{wishlist().length}}
+            {{wishlist().length===1?'BOOK':'BOOKS'}}</span
+          >
+        </div>
+        @for(item of wishlist();track $index;let i=$index){
+        <article>
+          <span class="number">{{('0'+(i+1)).slice(-2)}}</span>
+          <div>
+            <h3>{{item.title}}</h3>
+            <p>{{item.authors}}</p>
+          </div>
+          <button
+            class="text-button"
+            (click)="remove(i)"
+            [attr.aria-label]="'Remove '+item.title"
+          >
+            Remove
+          </button>
+        </article>
+        }@empty{
+        <div class="empty">
+          <span class="empty-mark" aria-hidden="true">↗</span>
+          <h2>A little space for possibility.</h2>
+          <p>
+            Your wishlist is empty. Add a title here or find one in the
+            collection.
+          </p>
+          <a href="#/">Browse the collection ↗</a>
+        </div>
+        }
+      </div>
+    </section>
+    } @else if(page()==='about'){
+    <section class="page-intro">
+      <p class="eyebrow">THE COLOPHON / 03</p>
+      <h1>A small library.<br /><em>A big love of stories.</em></h1>
+      <p>
+        The Reading Room is a renewed edition of In-N-Out Books, Andres Macias’s
+        WEB 425 Angular coursework.
+      </p>
+    </section>
+    <section class="prose">
+      <h2>Thoughtfully shelved.</h2>
+      <p>
+        Browse the original nine-book collection, open edition details, and
+        create a personal wishlist. The catalog comes from Open Library; the
+        wishlist stays in your browser.
+      </p>
+      <h2>Author spotlight: Michael Scott</h2>
+      <p>
+        The original project featured Irish fantasy author Michael Scott.
+        Explore his books and work on
+        <a
+          href="https://www.dillonscott.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >his official website ↗</a
+        >.
+      </p>
+      <p>
+        This is a student portfolio demo, not a bookstore or an affiliation with
+        any author or publisher. The illustrated jackets are original designs
+        for this reading room.
+      </p>
+    </section>
+    } @else{
+    <section class="page-intro">
+      <p class="eyebrow">BEHIND THE PAGES / 04</p>
+      <h1>Made for<br /><em>the curious.</em></h1>
+      <p>A portfolio project by Andres Macias.</p>
+    </section>
+    <section class="prose">
+      <h2>Every project has a story.</h2>
+      <p>
+        This fictional reading room has no physical shop or customer support
+        line. Find the developer and the rest of his work on his portfolio.
+      </p>
+      <a class="button" href="https://grimsyntaxcloud.github.io/"
+        >Visit Andres’s portfolio ↗</a
+      >
+    </section>
+    }
+    <p class="notice" role="status">{{notice()}}</p>
+  </main>
+</div>
 <footer>
   <a class="footer-brand" href="#/">The Reading Room.</a>
   <p>GOOD BOOKS. NO RUSH.</p>
@@ -215,9 +297,9 @@
   >
     ×</button
   >@if(selected();as book){
-  <p class="eyebrow">EDITION NOTES</p>
+  <p class="eyebrow">THE CATALOG CARD / EDITION NOTES</p>
   <h2>{{book.title}}</h2>
-  <p>{{book.authors}}</p>
+  <p class="dialog-author">{{book.authors}}</p>
   <dl>
     <dt>ISBN</dt>
     <dd>{{book.isbn}}</dd>
