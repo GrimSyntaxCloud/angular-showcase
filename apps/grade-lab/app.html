@@ -1,205 +1,282 @@
 <a class="skip" href="#main">Skip to content</a>
-<header>
-  <a class="brand" href="#/" aria-label="Grade Lab home"
-    ><span class="logo-mark" aria-hidden="true">▤</span>GRADE<span>LAB</span
-    ><small>01</small></a
-  >
-  <div class="header-right">
-    <span>YOUR NEXT STEP, IN NUMBERS.</span>@if(student()){<button
-      class="quiet"
-      (click)="signOut()"
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#/" aria-label="Grade Lab home"
+      ><span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span
+      ><span>grade<span>lab.</span></span></a
     >
-      Sign out ↗</button
-    >}@else{<span class="pill">STUDENT DEMO</span>}
-  </div>
-</header>
-<main id="main">
-  @if(!student()){
-  <section class="signin-layout">
-    <div class="signin-hero">
-      <p class="eyebrow">THE GPA CALCULATOR / REIMAGINED</p>
-      <h1>A clearer<br />picture of<br /><span>your progress.</span></h1>
-      <p>Courses in. Clarity out.<br />A small tool for your next big step.</p>
-      <div class="graphic" aria-hidden="true">
-        <div class="graph-line"></div>
-        <div class="graph-bar b1"></div>
-        <div class="graph-bar b2"></div>
-        <div class="graph-bar b3"></div>
-        <div class="graph-bar b4"></div>
-        <span>KEEP<br />GOING ↗</span>
-      </div>
-    </div>
-    <div class="signin-panel">
-      <span class="step">01 / LET'S GET STARTED</span>
-      <h2>Make room<br />for what's next.</h2>
-      <p>Enter a demo student ID to open your workspace.</p>
-      <form (ngSubmit)="signIn()">
-        <label for="student">Student ID</label
-        ><input
-          id="student"
-          name="student"
-          [(ngModel)]="studentId"
-          placeholder="e.g. 1007"
-          inputmode="numeric"
-          autocomplete="off"
-          required
-          maxlength="4"
-          aria-describedby="id-hint"
-        />
-        <p id="id-hint" class="hint">
-          Demo IDs: 1007, 1008, 1009, 1010, 1011, 1012
-        </p>
-        <p role="alert" class="error">{{error()}}</p>
-        <button class="primary" type="submit">
-          Open my workspace <span>↗</span>
-        </button>
-      </form>
-      <div class="demo-note">
-        <span>ⓘ</span>
-        <p>
-          This is a portfolio demo. These IDs unlock the calculator, not a real
-          student account. Your entries stay in this session.
-        </p>
-      </div>
-    </div>
-  </section>
-  } @else {
-  <div class="workspace-head">
-    <div>
-      <p class="eyebrow">WORKSPACE / DEMO STUDENT {{student()}}</p>
-      <h1>Every course<br /><span>counts.</span></h1>
-    </div>
-    <div class="scale-note">
-      <span class="tiny-label">A SIMPLE MEASURE</span><strong>4.00</strong
-      ><span>Equal-weight GPA scale</span
-      ><button
-        class="quiet"
-        (click)="showScale.set(!showScale())"
-        [attr.aria-expanded]="showScale()"
+    <p class="sidebar-label">A LITTLE CLARITY<br />GOES A LONG WAY.</p>
+    <div class="sidebar-nav">
+      <a href="#main" aria-current="page"
+        ><span>▤</span>Progress workspace<i>01</i></a
       >
-        {{showScale()?'Hide':'View'}} grade scale ↗
-      </button>
+      <div><span>◎</span>Equal-weight GPA<i>02</i></div>
     </div>
-  </div>
-  @if(showScale()){
-  <section class="grade-scale" aria-label="Grade point scale">
-    @for(g of grades;track g){
-    <div><strong>{{g}}</strong><span>{{points(g)}}</span></div>
-    }
-  </section>
-  }
-  <section class="workspace">
-    <div class="entry-panel">
-      <span class="step">01 / BUILD YOUR TRANSCRIPT</span>
-      <h2>Add a course.</h2>
-      <form (ngSubmit)="add()">
-        <label for="course">Course name</label
-        ><input
-          id="course"
-          name="course"
-          [(ngModel)]="course"
-          placeholder="e.g. Web Development"
-          required
-          maxlength="80"
-        /><label for="grade">Letter grade</label
-        ><select id="grade" name="grade" [(ngModel)]="grade">
-          @for(g of grades;track g){
-          <option [value]="g">{{g}} · {{points(g)}} points</option>
-          }</select
-        ><button class="primary" type="submit">
-          Add course <span>+</span>
-        </button>
-      </form>
-      <p class="hint">
-        Every course carries the same weight. This tool does not calculate
-        credit-hour weighted GPA.
-      </p>
+    <div class="side-note">
+      <span class="side-note-mark" aria-hidden="true">↗</span>
+      <h2>Every course<br />counts.</h2>
+      <p>Build your transcript.<br />See the bigger picture.</p>
+      <span class="side-rule"></span
+      ><small>YOUR NEXT STEP,<br />IN NUMBERS.</small>
     </div>
-    <div class="result-panel">
-      <div class="score-top">
-        <span class="step">02 / SEE THE BIG PICTURE</span
-        ><span class="score-label">ESTIMATED GPA</span>
+    <div class="side-footer">
+      <span class="status-dot"></span
+      ><span>PORTFOLIO DEMO<br /><small>No real student records.</small></span>
+    </div>
+  </aside>
+  <div class="main-shell">
+    <header>
+      <div class="breadcrumb">GRADE LAB <span>/</span> ACADEMIC PROGRESS</div>
+      <div class="header-actions">
+        @if(student()){<span class="student-chip"
+          ><i aria-hidden="true">S</i>Student {{student()}}</span
+        ><button class="quiet" (click)="signOut()">Sign out ↗</button
+        >}@else{<span class="session-chip">SESSION ONLY</span>}
       </div>
-      <div class="score">
-        <span>{{score()===null?'—':score()!.toFixed(2)}}</span><i>/ 4.00</i>
-      </div>
-      <div class="score-bottom">
-        <p>
-          {{entries().length}} {{entries().length===1?'course':'courses'}} on
-          your transcript<br /><small
-            >{{score()===null?'Ready when you are.':'One step at a time. Keep
-            going.'}}</small
-          >
-        </p>
+    </header>
+    <main id="main">
+      @if(!student()){
+      <section class="welcome-head">
+        <p class="eyebrow">YOUR PROGRESS, WITH PERSPECTIVE.</p>
+        <h1>Small steps.<br /><span>A clearer picture.</span></h1>
+        <p>Courses in. Clarity out. A small tool for your next big step.</p>
+      </section>
+      <section class="welcome-grid">
+        <div class="signin-panel">
+          <div class="panel-number"><span>01</span> LET'S GET STARTED</div>
+          <h2>Open your workspace.</h2>
+          <p>Choose a demo student ID to start your transcript.</p>
+          <form (ngSubmit)="signIn()">
+            <label for="student">Student ID</label
+            ><input
+              id="student"
+              name="student"
+              [(ngModel)]="studentId"
+              placeholder="e.g. 1007"
+              inputmode="numeric"
+              autocomplete="off"
+              required
+              maxlength="4"
+              aria-describedby="id-hint"
+            />
+            <p id="id-hint" class="hint">
+              Demo IDs: 1007, 1008, 1009, 1010, 1011, 1012
+            </p>
+            <p role="alert" class="error">{{error()}}</p>
+            <button class="primary" type="submit">
+              Open my workspace <span>↗</span>
+            </button>
+          </form>
+          <div class="demo-note">
+            <span aria-hidden="true">ⓘ</span>
+            <p>
+              These IDs unlock the calculator, not a real student account.
+              Entries stay in this session and clear when you sign out.
+            </p>
+          </div>
+        </div>
+        <div class="scale-preview">
+          <div class="preview-label">
+            <span>THE SCALE</span><span>EQUAL WEIGHT / EVERY COURSE</span>
+          </div>
+          <div class="preview-dial" aria-label="Maximum GPA scale:4.00">
+            <div>
+              <small>MAXIMUM GPA</small><strong>4.00</strong
+              ><span>A SIMPLE MEASURE.</span>
+            </div>
+            <i aria-hidden="true">↗</i>
+          </div>
+          <div class="scale-examples">
+            <span><b>A</b>4.00</span><span><b>B</b>3.00</span
+            ><span><b>C</b>2.00</span>
+          </div>
+          <p>A single number. A little more direction.</p>
+        </div>
+      </section>
+      <section class="process-strip" aria-label="How the calculator works">
+        <div><b>01</b><span>Add your courses</span></div>
+        <div><b>02</b><span>Calculate your GPA</span></div>
+        <div><b>03</b><span>See where you stand</span></div>
+      </section>
+      } @else{
+      <section class="workspace-head">
+        <div>
+          <p class="eyebrow">YOUR SESSION LEDGER / STUDENT {{student()}}</p>
+          <h1>Progress,<br /><span>at a glance.</span></h1>
+        </div>
         <button
-          class="calculate"
-          (click)="calculate()"
-          [disabled]="entries().length===0"
+          class="scale-toggle"
+          (click)="showScale.set(!showScale())"
+          [attr.aria-expanded]="showScale()"
         >
-          Calculate GPA ↗
+          {{showScale()?'Hide':'View'}} grade scale <span>↗</span>
         </button>
+      </section>
+      @if(showScale()){
+      <section class="grade-scale" aria-label="Grade point scale">
+        @for(g of grades;track g){
+        <div><strong>{{g}}</strong><span>{{points(g)}}</span></div>
+        }
+      </section>
+      }
+      <div class="metric-strip">
+        <div>
+          <span>COURSES ENTERED</span
+          ><strong>{{('0'+entries().length).slice(-2)}}</strong>
+        </div>
+        <div>
+          <span>GRADING SCALE</span
+          ><strong>4.00<small> / equal weight</small></strong>
+        </div>
+        <div>
+          <span>CALCULATION</span
+          ><strong class="metric-state"
+            >{{score()===null?'Ready when you are':'Up to date'}}<i
+              class="status-dot"
+            ></i
+          ></strong>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="transcript">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">THE DETAILS BEHIND THE NUMBER</p>
-        <h2>
-          Your transcript <span>{{('0'+entries().length).slice(-2)}}</span>
-        </h2>
-      </div>
-      <button class="quiet" (click)="clear()" [disabled]="!entries().length">
-        Clear transcript ×
-      </button>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">COURSE</th>
-            <th scope="col">GRADE</th>
-            <th scope="col">POINTS</th>
-            <th scope="col"><span class="sr-only">Actions</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(e of entries();track $index;let i=$index){
-          <tr>
-            <td>
-              <span class="row-number">{{('0'+(i+1)).slice(-2)}}</span
-              >{{e.course}}
-            </td>
-            <td><b class="grade-pill">{{e.grade}}</b></td>
-            <td>{{points(e.grade)}}</td>
-            <td>
-              <button
-                class="remove"
-                (click)="remove(i)"
-                [attr.aria-label]="'Remove '+e.course"
-              >
-                ×
-              </button>
-            </td>
-          </tr>
-          }@empty{
-          <tr>
-            <td colspan="4" class="empty">
-              <span>＋</span>Your story starts with a course.<small
-                >Add your first course above to build your transcript.</small
-              >
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <p class="status" role="status">{{message()}}</p>
-  }
-</main>
-<footer>
-  <strong>GRADE LAB /</strong
-  ><span>Reimagined GPA Calculator · WEB 425 coursework · Andres Macias</span
-  ><a href="https://grimsyntaxcloud.github.io/">Behind the project ↗</a>
-</footer>
+      <section class="workspace-grid">
+        <div class="entry-panel">
+          <div class="panel-number"><span>01</span> BUILD YOUR TRANSCRIPT</div>
+          <h2>Make each course count.</h2>
+          <form (ngSubmit)="add()">
+            <div class="form-fields">
+              <div>
+                <label for="course">Course name</label
+                ><input
+                  id="course"
+                  name="course"
+                  [(ngModel)]="course"
+                  placeholder="e.g. Web Development"
+                  required
+                  maxlength="80"
+                />
+              </div>
+              <div>
+                <label for="grade">Letter grade</label
+                ><select id="grade" name="grade" [(ngModel)]="grade">
+                  @for(g of grades;track g){
+                  <option [value]="g">{{g}} · {{points(g)}} points</option>
+                  }
+                </select>
+              </div>
+            </div>
+            <button class="primary" type="submit">
+              Add course <span>+</span>
+            </button>
+          </form>
+          <p class="hint">
+            Every course carries the same weight. This tool does not calculate
+            credit-hour weighted GPA.
+          </p>
+          <div class="entry-bottom">
+            <span class="mini-graph" aria-hidden="true"
+              ><i></i><i></i><i></i><i></i></span
+            ><span>One course.<br />One step forward.</span>
+          </div>
+        </div>
+        <div class="result-panel" [class.calculated]="score()!==null">
+          <div class="preview-label">
+            <span>02 / THE BIG PICTURE</span
+            ><span class="live-dot">ESTIMATED GPA</span>
+          </div>
+          <div
+            class="gpa-dial"
+            [style.--angle]="(score()??0)*90+'deg'"
+            role="img"
+            [attr.aria-label]="score()===null?'GPA not calculated': 'GPA '+score()!.toFixed(2)+' out of 4.00'"
+          >
+            <div class="dial-center">
+              <small>YOUR GPA</small
+              ><strong>{{score()===null?'—':score()!.toFixed(2)}}</strong
+              ><span>OUT OF 4.00</span>
+            </div>
+          </div>
+          <div class="result-summary">
+            <span
+              >{{entries().length}} {{entries().length===1?'course':'courses'}}
+              on your transcript</span
+            ><small
+              >{{score()===null?'Calculate to see where you stand.':'One step at
+              a time. Keep going.'}}</small
+            >
+          </div>
+          <button
+            class="calculate"
+            (click)="calculate()"
+            [disabled]="entries().length===0"
+          >
+            Calculate GPA <span>↗</span>
+          </button>
+        </div>
+      </section>
+      <section class="transcript">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">THE DETAILS BEHIND THE NUMBER</p>
+            <h2>
+              Your transcript <span>{{('0'+entries().length).slice(-2)}}</span>
+            </h2>
+          </div>
+          <button
+            class="quiet"
+            (click)="clear()"
+            [disabled]="!entries().length"
+          >
+            Clear transcript ×
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">COURSE</th>
+                <th scope="col">GRADE</th>
+                <th scope="col">POINTS</th>
+                <th scope="col"><span class="sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(e of entries();track $index;let i=$index){
+              <tr>
+                <td>
+                  <span class="row-number">{{('0'+(i+1)).slice(-2)}}</span
+                  >{{e.course}}
+                </td>
+                <td><b class="grade-pill">{{e.grade}}</b></td>
+                <td>{{points(e.grade)}}</td>
+                <td>
+                  <button
+                    class="remove"
+                    (click)="remove(i)"
+                    [attr.aria-label]="'Remove '+e.course"
+                  >
+                    ×
+                  </button>
+                </td>
+              </tr>
+              }@empty{
+              <tr>
+                <td colspan="4" class="empty">
+                  <span>＋</span>Your story starts with a course.<small
+                    >Add your first course above to build your
+                    transcript.</small
+                  >
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <p class="status" role="status">{{message()}}</p>
+      }
+    </main>
+    <footer>
+      <strong>GRADE LAB /</strong><span>WEB 425 coursework · Andres Macias</span
+      ><a href="https://grimsyntaxcloud.github.io/">Behind the project ↗</a>
+    </footer>
+  </div>
+</div>

@@ -39,3 +39,12 @@ All three applications checked in the in-app browser at a 390px viewport (375px 
 ## Reading Room library redesign — October22,2026
 
 Replaced the prior split editorial hero/forest palette with an ink-blue library index, parchment reading desk, stacked spines and illustrated book shelves. All app logic and the other two applications remain unchanged. Nine behavior tests and all three strict production builds passed. Browser verified title filtering, edition details, adding from the modal, wishlist persistence after reload, removal, and all nine catalog cards. The longest title's dialog fits at320px; catalog and wishlist have no horizontal page overflow at390px (content375) or320px (content305). Cover-opening transitions are CSS-only and disabled for reduced-motion preferences. Desktop/mobile proof screenshots are saved in the durable recovery artifacts.
+
+## Grade Lab and Opus redesign — October 22, 2026
+
+- Preserved all TypeScript application/domain logic and all Reading Room source files. A tracked-source ZIP was saved before editing.
+- All nine behavior tests and all three strict production builds pass. Reading Room output hashes remain unchanged.
+- Grade Lab desktop browser: invalid ID rejected; 1007 sign-in; C=2.00; C+A=3.00; removing C then recalculating gives4.00; grade-scale disclosure, clear transcript and sign-out work. The GPA dial reflects the actual calculated value and uses reduced-motion overrides.
+- Opus desktop browser: uppercase BACH search returns one record, detail displays actual name/genre, direct detail reload works; no-match search and Show All restore all five. Program numerals stay tied to original IDs when filtering.
+- Both applications checked in Chrome at390px and320px (content375px and305px). No horizontal page overflow on Grade Lab opening/calculated workspace or Opus program/detail/About/Contact. Grade Lab mobile sign-in, add-course, calculate3.00, clear and sign-out work. Mozart’s full name and record fields fit at320px.
+- Mobile Grade Lab heading and scale disclosure stack for readability. Controls retain visible focus states and semantic labels. CSS motion is disabled for reduced-motion preferences. Screenshots and deployment proof are saved in the recovery artifacts.
