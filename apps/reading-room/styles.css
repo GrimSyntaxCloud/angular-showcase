@@ -1,0 +1,728 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #193d31;
+  background: #f4f0e7;
+  font-synthesis: none;
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+a {
+  touch-action: manipulation;
+}
+a {
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #b35b38;
+  outline-offset: 5px;
+}
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  background: white;
+  padding: 1rem;
+  z-index: 100;
+}
+.skip:focus {
+  top: 1rem;
+}
+header {
+  max-width: 1440px;
+  margin: auto;
+  padding: 25px 5%;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  border-bottom: 1px solid #b9c1af;
+}
+.wordmark {
+  font:
+    bold 52px Georgia,
+    serif;
+  text-decoration: none;
+  letter-spacing: -8px;
+  line-height: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wordmark > span {
+  font-style: italic;
+}
+.wordmark small {
+  font:
+    10px/1.4 Arial,
+    sans-serif;
+  letter-spacing: 1px;
+  width: 82px;
+  margin-left: 16px;
+}
+nav {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+  font-size: 13px;
+}
+nav a {
+  text-decoration: none;
+  padding: 12px 0;
+}
+nav a[aria-current] {
+  border-bottom: 1px solid;
+}
+nav b {
+  background: #193d31;
+  color: #f4f0e7;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 4px 6px;
+  margin-left: 3px;
+}
+.edition {
+  font: 9px/1.5 monospace;
+  width: 125px;
+  letter-spacing: 1px;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  max-width: 1440px;
+  margin: auto;
+  min-height: 655px;
+  overflow: hidden;
+}
+.intro {
+  padding: 74px 0 65px 10%;
+}
+.eyebrow {
+  font: 10px/1.6 monospace;
+  letter-spacing: 2px;
+}
+h1 {
+  font:
+    normal clamp(62px, 7.8vw, 118px) / 0.94 Georgia,
+    serif;
+  letter-spacing: -6px;
+  margin: 35px 0 26px;
+}
+h1 em {
+  font-weight: normal;
+  color: #6e8061;
+}
+.dek {
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0 0 32px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  background: #193d31;
+  color: #f9f5eb;
+  border: 1px solid #193d31;
+  padding: 18px 24px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.button:hover {
+  background: #2b5545;
+}
+.button span {
+  font-size: 22px;
+}
+.book-art {
+  position: relative;
+  background: #d8decd;
+  border-radius: 50% 50% 0 0;
+  margin: 44px 7% 38px 5%;
+  min-width: 0;
+  perspective: 1300px;
+}
+.book {
+  position: absolute;
+  width: 37%;
+  height: 55%;
+  box-shadow: 8px 18px 16px #18292035;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  border-left: 7px solid #0002;
+}
+.book span {
+  font: 8px/1.4 monospace;
+  letter-spacing: 2px;
+}
+.book strong {
+  font:
+    normal 40px/1.1 Georgia,
+    serif;
+  margin: 25px 0 auto;
+}
+.book i {
+  font: 8px/1.5 monospace;
+  letter-spacing: 1px;
+  font-style: normal;
+}
+.book-one {
+  background: #ad4c32;
+  color: #f7dbc4;
+  transform: rotate(-14deg);
+  top: 27%;
+  left: 8%;
+  z-index: 1;
+}
+.book-two {
+  background: #234637;
+  color: #e7d0a0;
+  transform: rotate(6deg);
+  top: 13%;
+  left: 41%;
+  height: 61%;
+}
+.book-two strong {
+  font-size: 43px;
+  letter-spacing: 4px;
+  writing-mode: vertical-rl;
+  margin: 22px auto 0;
+}
+.book-three {
+  background: #ead4a0;
+  color: #244c46;
+  transform: rotate(17deg);
+  top: 47%;
+  left: 45%;
+  height: 40%;
+  z-index: 2;
+}
+.book-three strong {
+  font-size: 28px;
+  margin: 18px 0 0;
+}
+.book-three div {
+  font-size: 44px;
+  text-align: center;
+}
+.orbit {
+  position: absolute;
+  top: 6%;
+  left: 15%;
+  font: 10px monospace;
+  letter-spacing: 3px;
+  transform: rotate(-12deg);
+}
+.art-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font: 8px monospace;
+  letter-spacing: 2px;
+}
+.collection {
+  padding: 65px 5%;
+  max-width: 1440px;
+  margin: auto;
+  border-top: 1px solid #b9c1af;
+}
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 35px;
+}
+h2 {
+  font:
+    normal 44px/1.1 Georgia,
+    serif;
+  letter-spacing: -1.5px;
+  margin: 12px 0;
+}
+.section-head label {
+  width: 260px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+}
+input {
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid #718371;
+  background: transparent;
+  border-radius: 0;
+  color: #193d31;
+}
+.collection-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font: 10px/1.5 monospace;
+  color: #586754;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #b9c1af;
+}
+.text-button {
+  border: 0;
+  background: none;
+  color: inherit;
+  padding: 6px 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 12px;
+}
+.book-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 45px;
+}
+.book-list article {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid #b9c1af;
+  min-width: 0;
+}
+.number {
+  font: 12px monospace;
+  color: #6a7c69;
+}
+.mini-cover {
+  flex-shrink: 0;
+  width: 86px;
+  height: 125px;
+  background: #b85c3d;
+  color: #fcf0d9;
+  padding: 12px 9px;
+  border-left: 5px solid #0002;
+  box-shadow: 3px 5px 5px #173d3115;
+  display: flex;
+  flex-direction: column;
+}
+.mini-cover.alt {
+  background: #274b3a;
+}
+.mini-cover span {
+  font: 5px monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.mini-cover strong {
+  font:
+    14px/1.1 Georgia,
+    serif;
+  margin: auto 0;
+}
+.mini-cover i {
+  font: 6px monospace;
+  letter-spacing: 3px;
+}
+.book-info {
+  min-width: 0;
+  flex: 1;
+}
+.book-info .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+h3 {
+  font:
+    normal 25px/1.2 Georgia,
+    serif;
+  margin: 8px 0;
+}
+.book-info h3 button {
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+.book-info p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #687563;
+}
+.round {
+  border: 1px solid #a1ad99;
+  border-radius: 50%;
+  background: none;
+  width: 40px;
+  height: 40px;
+  color: inherit;
+  flex-shrink: 0;
+  font-size: 21px;
+}
+.round:hover {
+  background: #193d31;
+  color: #f4f0e7;
+}
+.page-intro {
+  padding: 65px 5% 40px;
+  max-width: 1440px;
+  margin: auto;
+}
+.page-intro h1 {
+  font-size: 85px;
+}
+.page-intro p:not(.eyebrow) {
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.wish-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 7%;
+  padding: 30px 5% 90px;
+  max-width: 1440px;
+  margin: auto;
+}
+.wish-layout form {
+  background: #e2e6d7;
+  padding: 32px;
+}
+.wish-layout h2 {
+  font-size: 30px;
+}
+.wish-layout label {
+  margin-top: 25px;
+}
+.wish-layout .button {
+  margin-top: 25px;
+  width: 100%;
+}
+.muted {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #5a6e5b;
+}
+.wishes article {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  border-bottom: 1px solid #b9c1af;
+  padding: 20px 0;
+}
+.wishes article > div {
+  flex: 1;
+}
+.wishes p {
+  font-size: 13px;
+}
+.empty {
+  padding: 30px 0;
+  line-height: 1.6;
+}
+.large-star {
+  font-size: 58px;
+  color: #9e4a30;
+}
+.prose {
+  max-width: 750px;
+  padding: 0 5% 70px;
+  margin: 0 0 0 5%;
+}
+.prose p {
+  line-height: 1.8;
+}
+.prose h2 {
+  margin-top: 40px;
+  font-size: 32px;
+}
+.notice {
+  font-size: 13px;
+  padding: 0 5%;
+}
+.notice:empty {
+  display: none;
+}
+footer {
+  background: #193d31;
+  color: #f4f0e7;
+  padding: 45px 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+.footer-brand {
+  font:
+    38px Georgia,
+    serif;
+  text-decoration: none;
+}
+footer > p {
+  text-align: right;
+  font: 10px monospace;
+  letter-spacing: 2px;
+}
+footer > div {
+  grid-column: span 2;
+  display: flex;
+  gap: 25px;
+  font-size: 11px;
+  padding-top: 25px;
+  border-top: 1px solid #ffffff35;
+}
+footer small {
+  margin-left: auto;
+  color: #c0cbb9;
+}
+dialog {
+  background: #f4f0e7;
+  color: #193d31;
+  border: 1px solid #193d31;
+  padding: 45px;
+  max-width: 580px;
+  width: calc(100% - 36px);
+  max-height: 90dvh;
+  overflow: auto;
+}
+dialog::backdrop {
+  background: #142a24aa;
+  backdrop-filter: blur(5px);
+}
+dialog h2 {
+  font-size: 38px;
+}
+dialog p {
+  line-height: 1.6;
+}
+dialog dl {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  font-size: 13px;
+  line-height: 2;
+}
+dialog dd {
+  margin: 0;
+}
+.dialog-close {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  background: none;
+  border: 0;
+  font-size: 30px;
+  color: inherit;
+  padding: 6px 10px;
+}
+@media (max-width: 900px) {
+  .edition {
+    display: none;
+  }
+  .hero {
+    min-height: 580px;
+  }
+  .book strong {
+    font-size: 30px;
+  }
+  .book-three strong {
+    font-size: 23px;
+  }
+  .book {
+    padding: 15px 12px;
+  }
+  .book-list article {
+    gap: 15px;
+  }
+  .number {
+    display: none;
+  }
+  .book-list {
+    column-gap: 25px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 620px) {
+  header {
+    padding: 23px 6%;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .wordmark {
+    font-size: 42px;
+  }
+  .wordmark small {
+    width: auto;
+    font-size: 9px;
+  }
+  nav {
+    margin: 0;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+  .intro {
+    padding: 45px 6% 30px;
+  }
+  h1 {
+    font-size: 77px;
+    letter-spacing: -4px;
+    margin: 25px 0;
+  }
+  .dek {
+    font-size: 15px;
+  }
+  .book-art {
+    height: 370px;
+    margin: 15px 6% 40px;
+  }
+  .book {
+    max-width: 150px;
+  }
+  .book strong {
+    font-size: 33px;
+  }
+  .book-two strong {
+    font-size: 32px;
+  }
+  .book-three strong {
+    font-size: 24px;
+  }
+  .collection {
+    padding: 40px 6%;
+  }
+  .section-head {
+    display: block;
+  }
+  .section-head label {
+    width: 100%;
+    margin-top: 25px;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  .collection-meta {
+    font-size: 9px;
+    align-items: center;
+  }
+  .collection-meta span {
+    max-width: 62%;
+  }
+  .book-list {
+    grid-template-columns: 1fr;
+  }
+  .book-list article {
+    padding: 24px 0;
+    gap: 20px;
+  }
+  .mini-cover {
+    width: 78px;
+    height: 112px;
+  }
+  .book-info h3 {
+    font-size: 23px;
+  }
+  .book-info .eyebrow {
+    font-size: 7px;
+  }
+  .round {
+    width: 36px;
+    height: 36px;
+  }
+  .page-intro {
+    padding: 45px 6% 20px;
+  }
+  .page-intro h1 {
+    font-size: 62px;
+  }
+  .page-intro p:not(.eyebrow) {
+    font-size: 16px;
+  }
+  .wish-layout {
+    grid-template-columns: 1fr;
+    padding: 20px 6% 50px;
+    gap: 25px;
+  }
+  .wish-layout form {
+    padding: 24px;
+  }
+  .wishes h3 {
+    font-size: 22px;
+  }
+  .prose {
+    margin: 0;
+    padding: 10px 6% 50px;
+  }
+  footer {
+    display: block;
+    padding: 35px 6%;
+  }
+  .footer-brand {
+    font-size: 31px;
+  }
+  footer > p {
+    text-align: left;
+    margin: 20px 0;
+  }
+  footer > div {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  footer small {
+    width: 100%;
+    margin: 0;
+  }
+  dialog {
+    padding: 32px 25px;
+  }
+  dialog h2 {
+    font-size: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
+.book-info h3,
+.wishes article > div,
+dialog h2 {
+  overflow-wrap: anywhere;
+}
+.wishes article > div {
+  min-width: 0;
+}
+.wishes article > .text-button {
+  flex-shrink: 0;
+}

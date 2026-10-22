@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "projects": {
+    "reading-room": {
+      "projectType": "application",
+      "root": "apps/reading-room",
+      "sourceRoot": "apps/reading-room",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/reading-room/main.ts",
+            "index": "apps/reading-room/index.html",
+            "tsConfig": "apps/reading-room/tsconfig.json",
+            "styles": ["apps/reading-room/styles.css"],
+            "outputPath": {
+              "base": "dist/reading-room",
+              "browser": ""
+            },
+            "baseHref": "./",
+            "outputHashing": "all",
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "600kb",
+                "maximumError": "1mb"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "buildTarget": "reading-room:build"
+          }
+        }
+      }
+    },
+    "grade-lab": {
+      "projectType": "application",
+      "root": "apps/grade-lab",
+      "sourceRoot": "apps/grade-lab",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/grade-lab/main.ts",
+            "index": "apps/grade-lab/index.html",
+            "tsConfig": "apps/grade-lab/tsconfig.json",
+            "styles": ["apps/grade-lab/styles.css"],
+            "outputPath": {
+              "base": "dist/grade-lab",
+              "browser": ""
+            },
+            "baseHref": "./",
+            "outputHashing": "all",
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "600kb",
+                "maximumError": "1mb"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "buildTarget": "grade-lab:build"
+          }
+        }
+      }
+    },
+    "opus": {
+      "projectType": "application",
+      "root": "apps/opus",
+      "sourceRoot": "apps/opus",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/opus/main.ts",
+            "index": "apps/opus/index.html",
+            "tsConfig": "apps/opus/tsconfig.json",
+            "styles": ["apps/opus/styles.css"],
+            "outputPath": {
+              "base": "dist/opus",
+              "browser": ""
+            },
+            "baseHref": "./",
+            "outputHashing": "all",
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "600kb",
+                "maximumError": "1mb"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "buildTarget": "opus:build"
+          }
+        }
+      }
+    }
+  }
+}

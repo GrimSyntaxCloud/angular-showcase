@@ -1,0 +1,194 @@
+<a href="#main" class="skip">Skip to content</a>
+<header>
+  <a href="#/" class="brand">opus<span>01</span></a
+  ><span class="brand-note">A STUDY IN<br />GREAT COMPOSERS.</span>
+  <nav aria-label="Main">
+    <a href="#/" [attr.aria-current]="page()==='directory'?'page':null"
+      >The directory</a
+    ><a href="#/about" [attr.aria-current]="page()==='about'?'page':null"
+      >About</a
+    ><a href="#/contact" [attr.aria-current]="page()==='contact'?'page':null"
+      >Contact ↗</a
+    >
+  </nav>
+</header>
+<main id="main">
+  @if(page()==='directory'){
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="tiny-dot"></span> THE COMPOSER COLLECTION / NO. 01
+      </p>
+      <h1>Some names<br />never fall<br /><em>silent.</em></h1>
+      <p>
+        Meet the minds behind the music.<br />Five composers. One enduring
+        language.
+      </p>
+      <a href="#directory" class="hero-link"
+        >Explore the directory <span>↓</span></a
+      >
+    </div>
+    <div class="sound-sculpture" aria-hidden="true">
+      <div class="disc disc-one"></div>
+      <div class="disc disc-two"></div>
+      <div class="disc disc-three"></div>
+      <div class="staff"><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="sculpture-label">FORM / RHYTHM / RESONANCE</span
+      ><span class="sculpture-number">05</span>
+      <div class="vertical-label">THE ART OF LISTENING STARTS HERE</div>
+    </div>
+  </section>
+  <section class="directory" id="directory">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">A FEW OF THE GREAT ONES</p>
+        <h2>The repertoire.</h2>
+      </div>
+      <label class="search-label"
+        >Find a composer
+        <div>
+          <input
+            type="search"
+            [formControl]="search"
+            placeholder="Search by name"
+            aria-describedby="result-count"
+          /><span aria-hidden="true">⌕</span>
+        </div></label
+      >
+    </div>
+    <div class="list-heading">
+      <span id="result-count" role="status"
+        >{{results().length}} OF 5 COMPOSERS</span
+      ><span>THE CLASSICAL COLLECTION</span>
+    </div>
+    <div class="composer-list">
+      @for(c of results();track c.id;let i=$index){<a
+        class="composer-row"
+        [href]="'#/composer/'+c.id"
+        ><span class="row-number">{{('0'+(i+1)).slice(-2)}}</span>
+        <div class="composer-name">
+          <small
+            >{{c.name.replace(c.label[0]+c.label.slice(1).toLowerCase(),'').trim()}}</small
+          >
+          <h3>{{c.label}}</h3>
+        </div>
+        <span class="genre">{{c.genre}}</span
+        ><span class="row-arrow">↗</span></a
+      >}@empty{
+      <div class="empty">
+        <h3>A quiet moment.</h3>
+        <p>No composers match “{{search.value}}”. Try a different name.</p>
+        <button (click)="clear()">Show all composers ↗</button>
+      </div>
+      }
+    </div>
+    <div class="directory-foot">
+      <span>COMPOSED WITH CURIOSITY.</span>
+      <p>A small directory with a lasting impression.</p>
+    </div>
+  </section>
+  } @else if(page()==='details') { @if(selected();as c){
+  <section class="detail">
+    <a class="back" href="#/">← Return to the directory</a>
+    <div class="detail-grid">
+      <div class="portrait-type" aria-hidden="true">
+        <span>{{c.initials}}</span><i></i><small>COMPOSER / {{c.id}}</small>
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow">THE CLASSICAL COLLECTION</p>
+        <h1>{{c.name}}</h1>
+        <dl>
+          <div>
+            <dt>COMPOSER ID</dt>
+            <dd>{{c.id}}</dd>
+          </div>
+          <div>
+            <dt>FULL NAME</dt>
+            <dd>{{c.name}}</dd>
+          </div>
+          <div>
+            <dt>GENRE</dt>
+            <dd>{{c.genre}}</dd>
+          </div>
+        </dl>
+        <p class="detail-note">
+          One of five composers in the original WEB 425 directory. Explore the
+          full collection to find the next name.
+        </p>
+        <a class="outlined-button" href="#/">Back to all five ↗</a>
+      </div>
+    </div>
+  </section>
+  }@else{
+  <section class="about">
+    <p class="eyebrow">AN UNWRITTEN PAGE</p>
+    <h1>Composer<br /><em>not found.</em></h1>
+    <p>This record isn't in the collection.</p>
+    <a class="outlined-button" href="#/">Return to the directory ↗</a>
+  </section>
+  } } @else if(page()==='about') {
+  <section class="about">
+    <p class="eyebrow">ABOUT THIS EDITION</p>
+    <h1>Old masters.<br /><em>Fresh perspective.</em></h1>
+    <div class="prose-grid">
+      <h2>A directory,<br />beautifully simple.</h2>
+      <div>
+        <p>
+          Opus is a renewed edition of Andres Macias’s Reactive Composer App,
+          originally created for WEB 425 coursework in 2022.
+        </p>
+        <p>
+          The five original composer records remain. Search by name, explore
+          each record, and return to the collection. Reactive Angular forms make
+          the search respond as you type.
+        </p>
+        <h3>From the original spotlight</h3>
+        <p>
+          Antonio Vivaldi was an Italian composer and violinist known for his
+          concertos. The original project featured his biography; learn more
+          from
+          <a
+            href="https://www.britannica.com/biography/Antonio-Vivaldi"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Encyclopaedia Britannica ↗</a
+          >.
+        </p>
+        <p class="note">
+          A frontend portfolio demo. No music playback, ticketing, or account
+          system is implied.
+        </p>
+      </div>
+    </div>
+  </section>
+  } @else {
+  <section class="about">
+    <p class="eyebrow">BEHIND THE WORK</p>
+    <h1>A note from<br /><em>the developer.</em></h1>
+    <div class="prose-grid">
+      <h2>Let's keep<br />creating.</h2>
+      <div>
+        <p>
+          Designed and developed by Andres Macias as a refreshed presentation of
+          Angular coursework.
+        </p>
+        <p>
+          Opus is a fictional directory, not a concert venue. For the
+          developer’s work and contact information, visit the portfolio.
+        </p>
+        <a class="outlined-button" href="https://grimsyntaxcloud.github.io/"
+          >Visit the portfolio ↗</a
+        >
+      </div>
+    </div>
+  </section>
+  }
+</main>
+<footer>
+  <a href="#/" class="footer-word">opus<span>♪</span></a>
+  <div>
+    <p>GREAT NAMES.<br />LASTING RESONANCE.</p>
+    <small>Reimagined WEB 425 coursework<br />Andres Macias · Angular</small
+    ><a href="https://grimsyntaxcloud.github.io/">More from Andres ↗</a>
+  </div>
+</footer>
