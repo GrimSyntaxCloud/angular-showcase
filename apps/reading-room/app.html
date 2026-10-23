@@ -9,12 +9,12 @@
   </p>
   <a class="reading-list" href="#/wishlist"
     >Your reading list <b>{{wishlist().length}}</b
-    ><span aria-hidden="true">↗</span></a
+    ><span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
   >
 </header>
 <div class="library-layout">
   <aside class="index-rail" aria-label="Library index">
-    <div class="rail-heading"><span>THE INDEX</span><span>↙</span></div>
+    <div class="rail-heading"><span>THE INDEX</span><span><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 5 5 19M5 5v14h14"></path></svg></span></div>
     <nav aria-label="Main">
       <a href="#/" [attr.aria-current]="page()==='browse'?'page':null"
         ><small>01</small><span>The collection</span><b>09</b></a
@@ -25,7 +25,7 @@
       >
       <a href="#/about" [attr.aria-current]="page()==='about'?'page':null"
         ><small>03</small><span>Our story</span
-        ><span aria-hidden="true">↗</span></a
+        ><span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
       >
     </nav>
     <div class="library-card">
@@ -44,7 +44,7 @@
         IN-N-OUT BOOKS<br />A renewed edition of<br />Andres's WEB 425
         coursework.
       </p>
-      <a href="#/contact">Behind the pages ↗</a>
+      <a href="#/contact">Behind the pages <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
     </div>
   </aside>
   <main id="main">
@@ -58,7 +58,7 @@
       <div class="heading-bottom">
         <p>Big worlds. Quiet moments.<br />Find your next place to get lost.</p>
         <a href="#collection"
-          >Pull up a chair <span aria-hidden="true">↓</span></a
+          >Pull up a chair <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v16m-7-7 7 7 7-7"></path></svg></span></a
         >
       </div>
       <div class="spine-stack" aria-hidden="true">
@@ -133,14 +133,14 @@
                 ></span
               > </span
             ><span class="open-caption" aria-hidden="true"
-              >Open edition notes ↗</span
+              >Open edition notes <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span
             >
           </button>
           <div class="book-info">
             <h3><button (click)="show(book)">{{book.title}}</button></h3>
             <p>{{book.authors}}</p>
             <button class="book-action" (click)="show(book)">
-              Edition details <span aria-hidden="true">↗</span>
+              Edition details <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
             </button>
           </div>
         </article>
@@ -150,7 +150,7 @@
           <h3>Not on this shelf.</h3>
           <p>No books match “{{query}}”. Try another title, author or ISBN.</p>
           <button class="text-button" (click)="query=''">
-            Show all nine books ↗
+            Show all nine books <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg>
           </button>
         </div>
         }
@@ -212,13 +212,13 @@
         </article>
         }@empty{
         <div class="empty">
-          <span class="empty-mark" aria-hidden="true">↗</span>
+          <span class="empty-mark" aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
           <h2>A little space for possibility.</h2>
           <p>
             Your wishlist is empty. Add a title here or find one in the
             collection.
           </p>
-          <a href="#/">Browse the collection ↗</a>
+          <a href="#/">Browse the collection <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
         </div>
         }
       </div>
@@ -247,7 +247,7 @@
           href="https://www.dillonscott.com/"
           target="_blank"
           rel="noopener noreferrer"
-          >his official website ↗</a
+          >his official website <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
         >.
       </p>
       <p>
@@ -269,7 +269,7 @@
         line. Find the developer and the rest of his work on his portfolio.
       </p>
       <a class="button" href="https://grimsyntaxcloud.github.io/"
-        >Visit Andres’s portfolio ↗</a
+        >Visit Andres’s portfolio <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
       >
     </section>
     }
@@ -285,7 +285,7 @@
       href="https://openlibrary.org/"
       target="_blank"
       rel="noopener noreferrer"
-      >Catalog by Open Library ↗</a
+      >Catalog by Open Library <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
     ><small>Reimagined WEB 425 coursework · Andres Macias</small>
   </div>
 </footer>
