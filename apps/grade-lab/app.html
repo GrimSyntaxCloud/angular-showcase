@@ -13,7 +13,7 @@
       <div><span>◎</span>Equal-weight GPA<i>02</i></div>
     </div>
     <div class="side-note">
-      <span class="side-note-mark" aria-hidden="true">↗</span>
+      <span class="side-note-mark" aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
       <h2>Every course<br />counts.</h2>
       <p>Build your transcript.<br />See the bigger picture.</p>
       <span class="side-rule"></span
@@ -30,7 +30,7 @@
       <div class="header-actions">
         @if(student()){<span class="student-chip"
           ><i aria-hidden="true">S</i>Student {{student()}}</span
-        ><button class="quiet" (click)="signOut()">Sign out ↗</button
+        ><button class="quiet" (click)="signOut()">Sign out <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></button
         >}@else{<span class="session-chip">SESSION ONLY</span>}
       </div>
     </header>
@@ -64,7 +64,7 @@
             </p>
             <p role="alert" class="error">{{error()}}</p>
             <button class="primary" type="submit">
-              Open my workspace <span>↗</span>
+              Open my workspace <span><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
             </button>
           </form>
           <div class="demo-note">
@@ -84,7 +84,7 @@
               <small>MAXIMUM GPA</small><strong>4.00</strong
               ><span>A SIMPLE MEASURE.</span>
             </div>
-            <i aria-hidden="true">↗</i>
+            <i aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></i>
           </div>
           <div class="scale-examples">
             <span><b>A</b>4.00</span><span><b>B</b>3.00</span
@@ -109,7 +109,7 @@
           (click)="showScale.set(!showScale())"
           [attr.aria-expanded]="showScale()"
         >
-          {{showScale()?'Hide':'View'}} grade scale <span>↗</span>
+          {{showScale()?'Hide':'View'}} grade scale <span><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
         </button>
       </section>
       @if(showScale()){
@@ -211,7 +211,7 @@
             (click)="calculate()"
             [disabled]="entries().length===0"
           >
-            Calculate GPA <span>↗</span>
+            Calculate GPA <span><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
           </button>
         </div>
       </section>
@@ -284,7 +284,7 @@
     </main>
     <footer>
       <strong>GRADE LAB /</strong><span>WEB 425 coursework · Andres Macias</span
-      ><a href="https://grimsyntaxcloud.github.io/">Behind the project ↗</a>
+      ><a href="https://grimsyntaxcloud.github.io/">Behind the project <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
     </footer>
   </div>
 </div>

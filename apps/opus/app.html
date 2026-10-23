@@ -8,7 +8,7 @@
     ><a href="#/about" [attr.aria-current]="page()==='about'?'page':null"
       >About</a
     ><a href="#/contact" [attr.aria-current]="page()==='contact'?'page':null"
-      >Contact ↗</a
+      >Contact <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
     >
   </nav>
 </header>
@@ -36,7 +36,7 @@
           Meet the minds behind the music.<br />Five composers. One enduring
           language.
         </p>
-        <a href="#directory">Open the program <span>↓</span></a>
+        <a href="#directory">Open the program <span><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v16m-7-7 7 7 7-7"></path></svg></span></a>
       </div>
     </div>
   </section>
@@ -59,7 +59,7 @@
     </aside>
     <div class="program-body">
       <div class="list-heading">
-        <span>PROGRAM / COMPOSER</span><span>EXPLORE THE RECORD ↗</span>
+        <span>PROGRAM / COMPOSER</span><span>EXPLORE THE RECORD <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span>
       </div>
       <div class="composer-list">
         @for(c of results();track c.id){<a
@@ -75,12 +75,12 @@
             <h3>{{c.label}}</h3>
             <span class="genre">{{c.genre}} · Record {{c.id}}</span>
           </div>
-          <span class="row-arrow" aria-hidden="true">↗</span></a
+          <span class="row-arrow" aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
         >} @empty{
         <div class="empty">
           <h3>A quiet moment.</h3>
           <p>No composers match “{{search.value}}”. Try a different name.</p>
-          <button (click)="clear()">Show all composers ↗</button>
+          <button (click)="clear()">Show all composers <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></button>
         </div>
         }
       </div>
@@ -92,7 +92,7 @@
   </section>
   } @else if(page()==='details') { @if(selected();as c){
   <section class="detail">
-    <a class="back" href="#/">← Return to the directory</a>
+    <a class="back" href="#/"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12H4m7-7-7 7 7 7"></path></svg> Return to the directory</a>
     <div class="detail-grid">
       <div class="portrait-type" aria-hidden="true">
         <div class="portrait-score"><i></i><i></i><i></i><i></i><i></i></div>
@@ -119,7 +119,7 @@
           One of five composers in the original WEB 425 directory. Explore the
           full collection to find the next name.
         </p>
-        <a class="outlined-button" href="#/">Back to all five ↗</a>
+        <a class="outlined-button" href="#/">Back to all five <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
       </div>
     </div>
   </section>
@@ -128,7 +128,7 @@
     <p class="eyebrow">AN UNWRITTEN PAGE</p>
     <h1>Composer<br /><em>not found.</em></h1>
     <p>This record isn't in the collection.</p>
-    <a class="outlined-button" href="#/">Return to the directory ↗</a>
+    <a class="outlined-button" href="#/">Return to the directory <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
   </section>
   } } @else if(page()==='about') {
   <section class="about">
@@ -155,7 +155,7 @@
             href="https://www.britannica.com/biography/Antonio-Vivaldi"
             target="_blank"
             rel="noopener noreferrer"
-            >Encyclopaedia Britannica ↗</a
+            >Encyclopaedia Britannica <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
           >.
         </p>
         <p class="note">
@@ -181,7 +181,7 @@
           developer’s work and contact information, visit the portfolio.
         </p>
         <a class="outlined-button" href="https://grimsyntaxcloud.github.io/"
-          >Visit the portfolio ↗</a
+          >Visit the portfolio <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a
         >
       </div>
     </div>
@@ -193,6 +193,6 @@
   <div>
     <p>GREAT NAMES.<br />LASTING RESONANCE.</p>
     <small>Reimagined WEB 425 coursework<br />Andres Macias · Angular</small
-    ><a href="https://grimsyntaxcloud.github.io/">More from Andres ↗</a>
+    ><a href="https://grimsyntaxcloud.github.io/">More from Andres <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
   </div>
 </footer>
